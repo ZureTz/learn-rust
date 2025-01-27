@@ -1,12 +1,18 @@
 fn main() {
-  let x = 5;
+  let a: [i32; 5] = [1, 2, 3, 4, 5];
 
-  let space_ship: i32 = x + 1;
+  println!("Please enter an array index.");
 
-  {
-    let x = space_ship.pow(2);
-    println!("The value of x in the inner scope is: {x}");
-  }
+  let mut index = String::new();
 
-  println!("The value of x is: {}", space_ship);
+  std::io::stdin()
+    .read_line(&mut index)
+    .expect("Failed to read line");
+
+  let index: usize = index
+    .trim()
+    .parse::<usize>()
+    .expect("Please enter a number.");
+
+  println!("The value at index {} is: {}", index, a[index]);
 }
